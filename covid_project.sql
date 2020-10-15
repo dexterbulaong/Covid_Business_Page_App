@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2020 at 02:57 AM
+-- Generation Time: Oct 16, 2020 at 12:34 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -95,6 +95,20 @@ INSERT INTO `protocols` (`business_id`, `status`, `mask_required`, `customer_lim
 (14, 'OPEN', 'REQUIRED', NULL, 'TRUE'),
 (15, 'OPEN', 'REQUIRED', NULL, NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `user_email` varchar(100) NOT NULL,
+  `user_password` varchar(50) NOT NULL,
+  `first_name` text NOT NULL,
+  `last_name` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -110,6 +124,22 @@ ALTER TABLE `businesses`
 --
 ALTER TABLE `protocols`
   ADD PRIMARY KEY (`business_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

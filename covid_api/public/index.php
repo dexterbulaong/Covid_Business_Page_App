@@ -12,7 +12,6 @@ require __DIR__ . '/../includes/DbOperations.php';
 $app = AppFactory::create();
 /*added*/
 $app->setBasePath("/covid_api/public");
-$app->addRoutingMiddleware();
 $errorMiddleware = $app->addErrorMiddleware(true,true,true);
 
 /* 
@@ -32,7 +31,7 @@ $app->post('/createuser', function(Request $request, Response $response){
         $hash_password = password_hash($user_password, PASSWORD_DEFAULT);
 
 
-        $db - new DbOperations;
+        $db = new DbOperations;
 
         $result = $db->createUser($user_email, $hash_password, $first_name, $last_name);
 
@@ -69,8 +68,10 @@ $app->post('/createuser', function(Request $request, Response $response){
                         ->withHeader('Content-type', 'application/json')
                         ->withStatus(422);
         }
-
     }
+    return $response
+                    ->withHeader('Content-type', 'application/json')
+                    ->withStatus(422);
 });
 
 function haveEmptyParameters($required_params, $response) {
