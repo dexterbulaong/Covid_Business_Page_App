@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2020 at 12:34 AM
+-- Generation Time: Oct 16, 2020 at 12:46 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -110,6 +110,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_email`, `user_password`, `first_name`, `last_name`) VALUES
+(1, 'dexter.j1.bulaong@gmail.com', '$2y$10$nch5O8tSEQxd9oSPabK5POcHi7U5Zi7eT0JDK5QYRqM', 'dexter', 'bulaong');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -139,7 +146,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

@@ -10,7 +10,7 @@
             $this->con = $db->connect();
         }
 
-        public function createUser($user_id, $user_email, $user_password, $first_name, $last_name){
+        public function createUser($user_email, $user_password, $first_name, $last_name){
             if (!$this->emailExists($user_email)){
                 $stmt = $this->con->prepare("INSERT INTO users (user_email, user_password, first_name, last_name) VALUES (?,?,?,?)");
                 $stmt->bind_param("ssss", $user_email, $user_password, $first_name, $last_name);

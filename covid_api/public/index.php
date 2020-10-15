@@ -12,7 +12,7 @@ require __DIR__ . '/../includes/DbOperations.php';
 $app = AppFactory::create();
 /*added*/
 $app->setBasePath("/covid_api/public");
-$errorMiddleware = $app->addErrorMiddleware(true,true,true);
+$app->addErrorMiddleware(true,true,true);
 
 /* 
     endpoint: createuser
@@ -68,10 +68,8 @@ $app->post('/createuser', function(Request $request, Response $response){
                         ->withHeader('Content-type', 'application/json')
                         ->withStatus(422);
         }
+
     }
-    return $response
-                    ->withHeader('Content-type', 'application/json')
-                    ->withStatus(422);
 });
 
 function haveEmptyParameters($required_params, $response) {
