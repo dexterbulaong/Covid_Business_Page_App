@@ -1,6 +1,6 @@
 # Covid Coders
 
-# For Report 3, I have sent pictures in a folder that showcases our code and will be showing you our code in the meeting/GitHub. The pictures show the following:
+For Report 3, I have sent pictures in a folder that showcases our code and will be showing you our code in the meeting/GitHub. The pictures show the following:
 
 # Capture 1 and Capture 2 showcases that we do in fact have files. It does not go into much detail about the files themselves but will showcase them to you at the meeting
 
