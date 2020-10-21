@@ -17,24 +17,23 @@ $app->addErrorMiddleware(true,true,true);
 
 /* 
     endpoint: createuser
-    parameters: user_email, user_password, first_name, last_name
+    parameters: user_email, user_password, business_name
     method: POST
 */
 $app->post('/createuser', function(Request $request, Response $response){
-    if(!haveEmptyParameters(array('user_email', 'user_password', 'first_name', 'last_name'), $request, $response)) {
+    if(!haveEmptyParameters(array('user_email', 'user_password', 'business_name'), $request, $response)) {
         $request_data = $request->getParsedBody();
 
         $user_email = $request_data['user_email'];
         $user_password = $request_data['user_password'];
-        $first_name = $request_data['first_name'];
-        $last_name = $request_data['last_name'];
+        $business_name = $request_data['business_name'];
 
         $hash_password = password_hash($user_password, PASSWORD_DEFAULT);
 
 
         $db = new DbOperations;
 
-        $result = $db->createUser($user_email, $hash_password, $first_name, $last_name);
+        $result = $db->createUser($user_email, $hash_password, $business_name);
 
         if($result == USER_CREATED) {
             $message = array();
@@ -152,19 +151,17 @@ $app->get('/allusers', function(Request $request, Response $response) {
 });
 
 /* not working needs to be looked at */
-$app->put('/updateuser/{user_id}', function(Request $request, Response $response, array $args) {
-    $user_id = $args['user_id'];
-    if(!haveEmptyParameters(array('user_email', 'first_name', 'last_name'), $request, $response)) {
+$app->put('/updateuser/{business_id}', function(Request $request, Response $response, array $args) {
+    $business_id = $args['business_id'];
+    if(!haveEmptyParameters(array('user_email', 'business_name'), $request, $response)) {
         $request_data = $request->getParsedBody();
 
         $user_email = $request_data['user_email'];
-        $first_name = $request_data['first_name'];
-        $last_name = $request_data['last_name'];
-
+        $business_name = $request_data['business_name'];
         
         $db = new DbOperations;
 
-        if($db->updateUser($user_email, $first_name, $last_name, $user_id)) {
+        if($db->updateUser($user_email, $business_name, $business_id)) {
             $response_data = array();
             $response_data['error'] = false;
             $response_data['message'] = 'User Update Successful';
@@ -246,6 +243,28 @@ $app->put('/updatepassword', function(Request $request, Response $response){
     return $response
         ->withHeader('Content-type', 'application/json')
         ->withStatus(422);  
+});
+
+$app->delete('/deleteuser/{business_id}', function(Request $request, Response $response, array $args){
+    $business_id = $args['business_id'];
+    $db = new DbOperations;
+
+    $response_data = array();
+
+    if($db->deleteUser($business_id)) {
+        $response_data['error'] = false;
+        $response_data['message'] = 'User has been deleted';
+    }
+    else {
+        $response_data['error'] = true;
+        $response_data['message'] = 'Please try again later';
+    }
+
+    $response->getBody()->write(json_encode($response_data));
+
+    return $response
+        ->withHeader('Content-type', 'application/json')
+        ->withStatus(200);
 });
 
 function haveEmptyParameters($required_params, $request, $response) {

@@ -10,10 +10,10 @@
             $this->con = $db->connect();
         }
         # creates variables of a user
-        public function createUser($user_email, $user_password, $first_name, $last_name){
+        public function createUser($user_email, $user_password, $business_name){
             if (!$this->emailExists($user_email)){
-                $stmt = $this->con->prepare("INSERT INTO users (user_email, user_password, first_name, last_name) VALUES (?,?,?,?)");
-                $stmt->bind_param("ssss", $user_email, $user_password, $first_name, $last_name);
+                $stmt = $this->con->prepare("INSERT INTO business_users (user_email, user_password, business_name) VALUES (?,?,?)");
+                $stmt->bind_param("sss", $user_email, $user_password, $business_name);
                 if ($stmt->execute()) {
                     return USER_CREATED;
                 } 
@@ -44,7 +44,7 @@
 
         # grabs and decodes the password of a user in the database using the email 
         private function getUserPasswordsByEmail($user_email) {
-            $stmt = $this->con->prepare("SELECT user_password FROM users WHERE user_email = ?" );
+            $stmt = $this->con->prepare("SELECT user_password FROM business_users WHERE user_email = ?" );
             $stmt->bind_param("s", $user_email);
             $stmt->execute();
             $stmt->bind_result($user_password);
@@ -52,41 +52,40 @@
             return $user_password;
         }
         
-        # Returns all users data in database
+        # Returns all business_users data in database
         public function getAllUsers() {
-            $stmt = $this->con->prepare("SELECT user_id, user_email, first_name, last_name FROM users;" );
+            $stmt = $this->con->prepare("SELECT business_id, user_email, business_name FROM business_users;" );
             $stmt->execute();
-            $stmt->bind_result($user_id, $user_email, $first_name, $last_name);
+            $stmt->bind_result($business_id, $user_email, $business_name);
+            $business_users = array();
             while($stmt->fetch()) {
-                $users = array();
-                $user['user_id'] = $user_id;
+                $user = array();
+                $user['business_id'] = $business_id;
                 $user['user_email'] = $user_email;
-                $user['first_name'] = $first_name;
-                $user['last_name'] = $last_name;
-                array_push($users, $user);
+                $user['business_name'] = $business_name;
+                array_push($business_users, $user);
             }
-            return $users;
+            return $business_users;
         }
 
         # returns a single user using email. User password is grabbed through getUserPasswordsByEmail() function
         public function getUserByEmail($user_email) {
-            $stmt = $this->con->prepare("SELECT user_id, user_email, first_name, last_name FROM users WHERE user_email = ?" );
+            $stmt = $this->con->prepare("SELECT business_id, user_email, business_name FROM business_users WHERE user_email = ?" );
             $stmt->bind_param("s", $user_email);
             $stmt->execute();
-            $stmt->bind_result($user_id, $user_email, $first_name, $last_name);
+            $stmt->bind_result($business_id, $user_email, $business_name);
             $stmt->fetch();
             $user = array();
-            $user['user_id'] = $user_id;
+            $user['business_id'] = $business_id;
             $user['user_email'] = $user_email;
-            $user['first_name'] = $first_name;
-            $user['last_name'] = $last_name;
+            $user['business_name'] = $business_name;
 
             return $user;
         }
 
-        public function updateUser($user_email, $first_name, $last_name, $user_id) {
-            $stmt = $this->con->prepare("UPDATE users SET user_email = ?, first_name = ?, last_name = ? WHERE user_id = ? ");
-            $stmt->bind_param("sssi", $user_email, $first_name, $last_name, $user_id);
+        public function updateUser($user_email, $business_name, $business_id) {
+            $stmt = $this->con->prepare("UPDATE business_users SET user_email = ?, business_name = ? WHERE business_id = ? ");
+            $stmt->bind_param("ssi", $user_email, $business_name, $business_id);
             if($stmt->execute())
                 return true;
             return false;
@@ -98,7 +97,7 @@
         
             if(password_verify($currentpassword, $hashed_password)) {
                 $hash_password = password_hash($newpassword, PASSWORD_DEFAULT);
-                $stmt = $this->con->prepare("UPDATE users SET user_password = ? WHERE user_email = ?");
+                $stmt = $this->con->prepare("UPDATE business_users SET user_password = ? WHERE user_email = ?");
                 $stmt->bind_param("ss", $hash_password, $user_email);
 
                 if($stmt->execute()) {
@@ -113,9 +112,20 @@
             }
         }
 
+        public function deleteUser($business_id) {
+            $stmt = $this->con->prepare("DELETE FROM business_users WHERE business_id = ?");
+            $stmt->bind_param("i", $business_id);
+            $stmt_increment = $this->con->prepare("ALTER TABLE business_users AUTO_INCREMENT=1");
+            if($stmt->execute()) {
+                $stmt_increment->execute();
+                return true;
+            }
+            return false;
+        }
+
         # checks to see if email is in the database
         private function emailExists($user_email) {
-            $stmt = $this->con->prepare("SELECT user_id FROM users Where user_email = ?");
+            $stmt = $this->con->prepare("SELECT business_id FROM business_users Where user_email = ?");
             $stmt->bind_param("s", $user_email);
             $stmt->execute();
             $stmt->store_result();
