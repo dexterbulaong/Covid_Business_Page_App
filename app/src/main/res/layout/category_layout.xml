@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Categ_main">
+
+    <TextView
+        android:id="@+id/textview_second"
+        android:layout_width="325dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="9dp"
+        android:singleLine="true"
+        android:text="Here are your Categories"
+        android:textAllCaps="true"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/back_to_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/previous"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/to_beauty"
+        android:layout_width="327dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:text="Beauty"
+        app:layout_constraintBottom_toTopOf="@+id/to_pets"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/to_restaur" />
+
+    <Button
+        android:id="@+id/to_government"
+        android:layout_width="327dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:text="Government"
+        app:layout_constraintBottom_toTopOf="@+id/to_grocery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_second" />
+
+    <Button
+        android:id="@+id/to_grocery"
+        android:layout_width="328dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="3dp"
+        android:text="Grocery"
+        app:layout_constraintBottom_toTopOf="@+id/to_restaur"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/to_government" />
+
+    <Button
+        android:id="@+id/to_pets"
+        android:layout_width="327dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:text="Pet Stores"
+        app:layout_constraintBottom_toTopOf="@+id/to_retail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/to_beauty" />
+
+    <Button
+        android:id="@+id/to_restaur"
+        android:layout_width="325dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:text="Restaurant"
+        app:layout_constraintBottom_toTopOf="@+id/to_beauty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/to_grocery" />
+
+    <Button
+        android:id="@+id/to_retail"
+        android:layout_width="327dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:text="Retail"
+        app:layout_constraintBottom_toTopOf="@+id/to_ware"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/to_pets" />
+
+    <Button
+        android:id="@+id/to_sports"
+        android:layout_width="327dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="3dp"
+        android:text="Sports"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/to_ware" />
+
+    <Button
+        android:id="@+id/to_ware"
+        android:layout_width="327dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:text="Warehouse"
+        app:layout_constraintBottom_toTopOf="@+id/to_sports"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/to_retail" />
+</androidx.constraintlayout.widget.ConstraintLayout>

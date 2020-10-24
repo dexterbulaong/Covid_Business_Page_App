@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/MainHome">
+
+    <fragment
+        android:id="@+id/MainHome"
+        android:name="com.example.covidApp.home_file"
+        android:label="Home"
+        tools:layout="@layout/home_layout">
+        <action
+            android:id="@+id/action_MainHome_to_CategNav"
+            app:destination="@id/CategNav" />
+        <action
+            android:id="@+id/action_MainHome_to_logActivity"
+            app:destination="@id/logActivity" />
+        <action
+            android:id="@+id/action_MainHome_to_register_Activity"
+            app:destination="@id/register_Activity" />
+    </fragment>
+    <fragment
+        android:id="@+id/CategNav"
+        android:name="com.example.covidApp.Categ_main"
+        android:label="Category Home"
+        tools:layout="@layout/category_layout">
+        <action
+            android:id="@+id/action_CategNav_to_MainHome"
+            app:destination="@id/MainHome" />
+        <action
+            android:id="@+id/action_CategNav_to_beauty_search"
+            app:destination="@id/beauty_search" />
+        <action
+            android:id="@+id/action_CategNav_to_groc_search"
+            app:destination="@id/groc_search" />
+        <action
+            android:id="@+id/action_CategNav_to_pets_search"
+            app:destination="@id/pets_search" />
+        <action
+            android:id="@+id/action_CategNav_to_govern_search2"
+            app:destination="@id/govern_search" />
+        <action
+            android:id="@+id/action_CategNav_to_restaurant_search"
+            app:destination="@id/restaurant_search" />
+        <action
+            android:id="@+id/action_CategNav_to_retail_search"
+            app:destination="@id/retail_search" />
+        <action
+            android:id="@+id/action_CategNav_to_sports_search"
+            app:destination="@id/sports_search" />
+        <action
+            android:id="@+id/action_CategNav_to_warehouse_search"
+            app:destination="@id/warehouse_search" />
+    </fragment>
+    <fragment
+        android:id="@+id/beauty_search"
+        android:name="com.example.covidApp.Beauty_search"
+        android:label="Beauty_search"
+        tools:layout="@layout/beauty_layout">
+        <action
+            android:id="@+id/action_beauty_search_to_CategNav"
+            app:destination="@id/CategNav" />
+    </fragment>
+    <fragment
+        android:id="@+id/govern_search"
+        android:name="com.example.covidApp.Govern_search"
+        android:label="Govern_search"
+        tools:layout="@layout/govern_layout">
+        <action
+            android:id="@+id/action_govern_search_to_CategNav"
+            app:destination="@id/CategNav" />
+    </fragment>
+    <fragment
+        android:id="@+id/groc_search"
+        android:name="com.example.covidApp.Groc_search"
+        android:label="Groc_search"
+        tools:layout="@layout/groc_layout">
+        <action
+            android:id="@+id/action_groc_search_to_CategNav"
+            app:destination="@id/CategNav" />
+    </fragment>
+    <fragment
+        android:id="@+id/pets_search"
+        android:name="com.example.covidApp.Pets_search"
+        android:label="Pets_search"
+        tools:layout="@layout/pets_layout">
+        <action
+            android:id="@+id/action_pets_search_to_CategNav"
+            app:destination="@id/CategNav" />
+    </fragment>
+    <fragment
+        android:id="@+id/restaurant_search"
+        android:name="com.example.covidApp.Restaurant_search"
+        android:label="Restaurant_search"
+        tools:layout="@layout/rest_layout">
+        <action
+            android:id="@+id/action_restaurant_search_to_CategNav"
+            app:destination="@id/CategNav" />
+    </fragment>
+    <fragment
+        android:id="@+id/retail_search"
+        android:name="com.example.covidApp.Retail_search"
+        android:label="Retail_search"
+        tools:layout="@layout/retail_layout">
+        <action
+            android:id="@+id/action_retail_search_to_CategNav"
+            app:destination="@id/CategNav" />
+    </fragment>
+    <fragment
+        android:id="@+id/sports_search"
+        android:name="com.example.covidApp.Sports_search"
+        android:label="Sports_search"
+        tools:layout="@layout/sport_layout">
+        <action
+            android:id="@+id/action_sports_search_to_CategNav"
+            app:destination="@id/CategNav" />
+    </fragment>
+    <fragment
+        android:id="@+id/warehouse_search"
+        android:name="com.example.covidApp.Warehouse_search"
+        android:label="Warehouse_search"
+        tools:layout="@layout/ware_layout">
+        <action
+            android:id="@+id/action_warehouse_search_to_CategNav"
+            app:destination="@id/CategNav" />
+    </fragment>
+    <activity
+        android:id="@+id/logActivity"
+        android:name="com.example.covidApp.LogActivity"
+        android:label="activity_log"
+        tools:layout="@layout/activity_log" />
+    <activity
+        android:id="@+id/register_Activity"
+        android:name="com.example.covidApp.Register_Activity"
+        android:label="activity_register_"
+        tools:layout="@layout/activity_register_" />
+
+</navigation>
