@@ -10,3 +10,4 @@ Capture 4 Showcases our Categories page. This page allows us the user to choose 
 
 Capture 5 Showcases our login page. This will allow the user to login to an account they made on the app and change their store/facility location. This also takes the user back to the home page once the user is done doing what he needed
 
+This is the test to see if it works
