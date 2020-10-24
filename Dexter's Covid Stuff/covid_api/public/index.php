@@ -244,7 +244,7 @@ $app->put('/updatepassword', function(Request $request, Response $response){
         ->withHeader('Content-type', 'application/json')
         ->withStatus(422);  
 });
-
+# delete operation
 $app->delete('/deleteuser/{business_id}', function(Request $request, Response $response, array $args){
     $business_id = $args['business_id'];
     $db = new DbOperations;

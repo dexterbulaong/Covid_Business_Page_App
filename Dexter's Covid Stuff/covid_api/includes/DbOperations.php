@@ -111,7 +111,7 @@
                     return PASSWORD_DOES_NOT_MATCH;
             }
         }
-
+        # deletes users
         public function deleteUser($business_id) {
             $stmt = $this->con->prepare("DELETE FROM business_users WHERE business_id = ?");
             $stmt->bind_param("i", $business_id);
