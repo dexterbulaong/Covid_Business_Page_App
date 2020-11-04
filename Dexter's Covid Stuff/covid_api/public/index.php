@@ -20,6 +20,10 @@ $app->addErrorMiddleware(true,true,true);
     parameters: user_email, user_password, business_name
     method: POST
 */
+
+/*Create Functions*/
+
+# allows you to create a row in the business_users table in the database
 $app->post('/createuser', function(Request $request, Response $response){
     if(!haveEmptyParameters(array('user_email', 'user_password', 'business_name'), $request, $response)) {
         $request_data = $request->getParsedBody();
@@ -71,7 +75,117 @@ $app->post('/createuser', function(Request $request, Response $response){
 
     }
 });
+# allows you to create a row in the businesses table in the database
+$app->post('/createbusiness', function(Request $request, Response $response){
+    if(!haveEmptyParameters(array('business_id', 'business_name', 'business_address', 'business_hours', 'business_type', 'business_link', 'entry_date', 'last_updated'), $request, $response)) {
+        $request_data = $request->getParsedBody();
 
+        $business_id = $request_data['business_id'];
+        $business_name = $request_data['business_name'];
+        $business_address = $request_data['business_address'];
+        $business_hours = $request_data['business_hours'];
+        $business_type = $request_data['business_type'];
+        $business_link = $request_data['business_link'];
+        $entry_date = $request_data['entry_date'];
+        $last_updated = $request_data['last_updated'];
+
+
+        $db = new DbOperations;
+
+        $result = $db->createBusiness($business_id, $business_name, $business_address, $business_hours, $business_type, $business_link, $entry_date, $last_updated);
+
+        if($result == USER_CREATED) {
+            $message = array();
+            $message['error'] = false;
+            $message['message'] = 'Business created successfully';
+            /*added to line*/
+            $response->getBody()->write(json_encode($message));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(201);
+        }
+        else if($result == USER_FAILURE) {
+            $message = array();
+            $message['error'] = true;
+            $message['message'] = 'Some error occurred';
+            /*added to line*/
+            $response->getBody()->write(json_encode($message));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(422);
+        }
+        else if($result == USER_EXISTS) {
+            $message = array();
+            $message['error'] = true;
+            $message['message'] = 'Business already exists';
+            /*added to line*/
+            $response->getBody()->write(json_encode($message));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(422);
+        }
+
+    }
+});
+# allows you to create a row in the protocols table in the database
+$app->post('/createprotocols', function(Request $request, Response $response){
+    if(!haveEmptyParameters(array('business_id', 'status', 'mask_required', 'customer_limit', 'curbside_pickup'), $request, $response)) {
+        $request_data = $request->getParsedBody();
+
+        $business_id = $request_data['business_id'];
+        $status = $request_data['status'];
+        $mask_required = $request_data['mask_required'];
+        $customer_limit = $request_data['customer_limit'];
+        $curbside_pickup = $request_data['curbside_pickup'];
+
+
+        $db = new DbOperations;
+
+        $result = $db->createProtocols($business_id, $status, $mask_required, $customer_limit, $curbside_pickup);
+
+        if($result == USER_CREATED) {
+            $message = array();
+            $message['error'] = false;
+            $message['message'] = 'Protocols created successfully';
+            /*added to line*/
+            $response->getBody()->write(json_encode($message));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(201);
+        }
+        else if($result == USER_FAILURE) {
+            $message = array();
+            $message['error'] = true;
+            $message['message'] = 'Some error occurred';
+            /*added to line*/
+            $response->getBody()->write(json_encode($message));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(422);
+        }
+        else if($result == USER_EXISTS) {
+            $message = array();
+            $message['error'] = true;
+            $message['message'] = 'Protocols already exists';
+            /*added to line*/
+            $response->getBody()->write(json_encode($message));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(422);
+        }
+
+    }
+});
+
+#######################
+
+# checks user credentials
 $app->post('/userlogin', function(Request $request, Response $response){
     if(!haveEmptyParameters(array('user_email', 'user_password'), $request, $response)){
         $request_data = $request->getParsedBody();
@@ -132,6 +246,7 @@ $app->post('/userlogin', function(Request $request, Response $response){
 
 });
 
+# gets all the business_users information in the database
 $app->get('/allusers', function(Request $request, Response $response) {
     $db = new DbOperations;
 
@@ -150,7 +265,11 @@ $app->get('/allusers', function(Request $request, Response $response) {
     
 });
 
-/* not working needs to be looked at */
+##########################
+
+/*Update Functions*/
+
+# allows you to update a row in the business users table
 $app->put('/updateuser/{business_id}', function(Request $request, Response $response, array $args) {
     $business_id = $args['business_id'];
     if(!haveEmptyParameters(array('user_email', 'business_name'), $request, $response)) {
@@ -192,9 +311,105 @@ $app->put('/updateuser/{business_id}', function(Request $request, Response $resp
     return $response
                         ->withHeader('Content-type', 'application/json')
                         ->withStatus(200);
+});
+
+# allows you to updata a row in the businesses table
+$app->put('/updatebusiness/{business_id}', function(Request $request, Response $response, array $args) {
+    $business_id = $args['business_id'];
+    if(!haveEmptyParameters(array('business_name', 'business_address', 'business_hours', 'business_type', 'business_link', 'entry_date', 'last_updated'), $request, $response)) {
+        $request_data = $request->getParsedBody();
+
+        $business_name = $request_data['business_name'];
+        $business_address = $request_data['business_address'];
+        $business_hours = $request_data['business_hours'];
+        $business_type = $request_data['business_type'];
+        $business_link = $request_data['business_link'];
+        $entry_date = $request_data['entry_date'];
+        $last_updated = $request_data['last_updated'];
+        
+        $db = new DbOperations;
+
+        if($db->updateBusinesses($business_name, $business_address, $business_hours, $business_type, $business_link, $entry_date, $last_updated, $business_id)) {
+            $response_data = array();
+            $response_data['error'] = false;
+            $response_data['message'] = 'Business Update Successful';
+            $business = $db->getBusinessById($business_id);
+            $response_data['business'] = $business;
+
+            $response->getBody()->write(json_encode($response_data));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+        }
+        else {
+            $response_data = array();
+            $response_data['error'] = true;
+            $response_data['message'] = 'Please try again later';
+            $business = $db->getBusinessById($business_id);
+            $response_data['business'] = $business;
+
+            $response->getBody()->write(json_encode($response_data));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+        }
+        
+    }
+    return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+});
+
+# allows you to update a row in the protocols table
+$app->put('/updateprotocols/{business_id}', function(Request $request, Response $response, array $args) {
+    $business_id = $args['business_id'];
+    if(!haveEmptyParameters(array('status', 'mask_required', 'customer_limit', 'curbside_pickup'), $request, $response)) {
+        $request_data = $request->getParsedBody();
+
+        $status = $request_data['status'];
+        $mask_required = $request_data['mask_required'];
+        $customer_limit = $request_data['customer_limit'];
+        $curbside_pickup = $request_data['curbside_pickup'];
+        
+        $db = new DbOperations;
+
+        if($db->updateProtocols($status, $mask_required, $customer_limit, $curbside_pickup, $business_id)) {
+            $response_data = array();
+            $response_data['error'] = false;
+            $response_data['message'] = 'Protocol Update Successful';
+            $protocol = $db->getProtocolsById($business_id);
+            $response_data['protocol'] = $protocol;
+
+            $response->getBody()->write(json_encode($response_data));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+        }
+        else {
+            $response_data = array();
+            $response_data['error'] = true;
+            $response_data['message'] = 'Please try again later';
+            $protocol = $db->getProtocolsById($business_id);
+            $response_data['protocol'] = $protocol;
+
+            $response->getBody()->write(json_encode($response_data));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+        }
+        
+    }
+    return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
 
 });
 
+# allows you to update the password of a business_user
 $app->put('/updatepassword', function(Request $request, Response $response){
 
     if(!haveEmptyParameters(array('currentpassword', 'newpassword', 'user_email'), $request, $response)){
@@ -244,7 +459,12 @@ $app->put('/updatepassword', function(Request $request, Response $response){
         ->withHeader('Content-type', 'application/json')
         ->withStatus(422);  
 });
-# delete operation
+
+#############################
+
+/*Delete Functions*/
+
+# deletes a row in the the business_user table
 $app->delete('/deleteuser/{business_id}', function(Request $request, Response $response, array $args){
     $business_id = $args['business_id'];
     $db = new DbOperations;
@@ -254,6 +474,28 @@ $app->delete('/deleteuser/{business_id}', function(Request $request, Response $r
     if($db->deleteUser($business_id)) {
         $response_data['error'] = false;
         $response_data['message'] = 'User has been deleted';
+    }
+    else {
+        $response_data['error'] = true;
+        $response_data['message'] = 'Please try again later';
+    }
+
+    $response->getBody()->write(json_encode($response_data));
+
+    return $response
+        ->withHeader('Content-type', 'application/json')
+        ->withStatus(200);
+});
+
+$app->delete('/deletebusiness/{business_id}', function(Request $request, Response $response, array $args){
+    $business_id = $args['business_id'];
+    $db = new DbOperations;
+
+    $response_data = array();
+
+    if($db->deleteBusiness($business_id)) {
+        $response_data['error'] = false;
+        $response_data['message'] = 'Business has been deleted';
     }
     else {
         $response_data['error'] = true;
