@@ -15,11 +15,6 @@ $app->addBodyParsingMiddleware();
 $app->setBasePath("/covid_api/public");
 $app->addErrorMiddleware(true,true,true);
 
-/* 
-    endpoint: createuser
-    parameters: user_email, user_password, business_name
-    method: POST
-*/
 
 /*Create Functions*/
 
@@ -183,70 +178,11 @@ $app->post('/createprotocols', function(Request $request, Response $response){
     }
 });
 
-#######################
+#####################
 
-# checks user credentials
-$app->post('/userlogin', function(Request $request, Response $response){
-    if(!haveEmptyParameters(array('user_email', 'user_password'), $request, $response)){
-        $request_data = $request->getParsedBody();
-        $user_email = $request_data['user_email'];
-        $user_password = $request_data['user_password'];
+/* Get Functions*/
 
-        $db = new DbOperations;
-
-        $result = $db->userLogin($user_email, $user_password);
-
-        if($result == USER_AUTHENTICATED) {
-
-            $user = $db->getUserByEmail($user_email);
-            $response_data = array();
-
-            $response_data['error'] = false;
-            $response_data['message'] = 'Login Successful';
-            $response_data['user'] = $user;
-
-            $response->getBody()->write(json_encode($response_data));
-
-            return $response
-                        ->withHeader('Content-type', 'application/json')
-                        ->withStatus(200);
-
-        }
-        else if($result == USER_NOT_FOUND) {
-            $response_data = array();
-
-            $response_data['error'] = true;
-            $response_data['message'] = 'User not found';
-
-            $response->getBody()->write(json_encode($response_data));
-
-            return $response
-                        ->withHeader('Content-type', 'application/json')
-                        ->withStatus(200);
-        }
-        else if($result == USER_PASSWORD_DOES_NOT_MATCH) {
-            $response_data = array();
-
-            $response_data['error'] = true;
-            $response_data['message'] = 'Invalid password';
-
-            $response->getBody()->write(json_encode($response_data));
-
-            return $response
-                        ->withHeader('Content-type', 'application/json')
-                        ->withStatus(200);
-        }
-
-
-    }
-
-    return $response
-                        ->withHeader('Content-type', 'application/json')
-                        ->withStatus(422);
-
-});
-
-# gets all the business_users information in the database
+# gets all the rows in the business_users table in the database
 $app->get('/allusers', function(Request $request, Response $response) {
     $db = new DbOperations;
 
@@ -256,6 +192,69 @@ $app->get('/allusers', function(Request $request, Response $response) {
 
     $response_data['error'] = false;
     $response_data['users'] = $users;
+
+    $response->getBody()->write(json_encode($response_data));
+
+    return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+    
+});
+
+# gets a row in the business_users table minus the password
+$app->get('/getuser/{user_email}', function(Request $request, Response $response, array $args) {
+    $user_email = $args['user_email'];
+
+    $db = new DbOperations;
+
+    $user = $db->getUserByEmail($user_email);
+
+    $response_data = array();
+
+    $response_data['error'] = false;
+    $response_data['user'] = $user;
+
+    $response->getBody()->write(json_encode($response_data));
+
+    return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+    
+});
+
+# gets a row in the businesses table depending on the business_id
+$app->get('/getbusiness/{business_id}', function(Request $request, Response $response, array $args) {
+    $business_id = $args['business_id'];
+
+    $db = new DbOperations;
+
+    $business = $db->getBusinessById($business_id);
+
+    $response_data = array();
+
+    $response_data['error'] = false;
+    $response_data['business'] = $business;
+
+    $response->getBody()->write(json_encode($response_data));
+
+    return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+    
+});
+
+# gets a row in the protocols table
+$app->get('/getprotocol/{business_id}', function(Request $request, Response $response, array $args) {
+    $business_id = $args['business_id'];
+
+    $db = new DbOperations;
+
+    $protocol = $db->getProtocolById($business_id);
+
+    $response_data = array();
+
+    $response_data['error'] = false;
+    $response_data['protocol'] = $protocol;
 
     $response->getBody()->write(json_encode($response_data));
 
@@ -462,16 +461,75 @@ $app->put('/updatepassword', function(Request $request, Response $response){
 
 #############################
 
-/*Delete Functions*/
+# checks user credentials
+$app->post('/userlogin', function(Request $request, Response $response){
+    if(!haveEmptyParameters(array('user_email', 'user_password'), $request, $response)){
+        $request_data = $request->getParsedBody();
+        $user_email = $request_data['user_email'];
+        $user_password = $request_data['user_password'];
 
-# deletes a row in the the business_user table
+        $db = new DbOperations;
+
+        $result = $db->userLogin($user_email, $user_password);
+
+        if($result == USER_AUTHENTICATED) {
+
+            $user = $db->getUserByEmail($user_email);
+            $response_data = array();
+
+            $response_data['error'] = false;
+            $response_data['message'] = 'Login Successful';
+            $response_data['user'] = $user;
+
+            $response->getBody()->write(json_encode($response_data));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+
+        }
+        else if($result == USER_NOT_FOUND) {
+            $response_data = array();
+
+            $response_data['error'] = true;
+            $response_data['message'] = 'User not found';
+
+            $response->getBody()->write(json_encode($response_data));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+        }
+        else if($result == USER_PASSWORD_DOES_NOT_MATCH) {
+            $response_data = array();
+
+            $response_data['error'] = true;
+            $response_data['message'] = 'Invalid password';
+
+            $response->getBody()->write(json_encode($response_data));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+        }
+
+
+    }
+
+    return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(422);
+
+});
+
+# deletes an entity(business information) in the database
 $app->delete('/deleteuser/{business_id}', function(Request $request, Response $response, array $args){
     $business_id = $args['business_id'];
     $db = new DbOperations;
 
     $response_data = array();
 
-    if($db->deleteUser($business_id)) {
+    if($db->deleteEntity($business_id)) {
         $response_data['error'] = false;
         $response_data['message'] = 'User has been deleted';
     }
@@ -487,28 +545,7 @@ $app->delete('/deleteuser/{business_id}', function(Request $request, Response $r
         ->withStatus(200);
 });
 
-$app->delete('/deletebusiness/{business_id}', function(Request $request, Response $response, array $args){
-    $business_id = $args['business_id'];
-    $db = new DbOperations;
-
-    $response_data = array();
-
-    if($db->deleteBusiness($business_id)) {
-        $response_data['error'] = false;
-        $response_data['message'] = 'Business has been deleted';
-    }
-    else {
-        $response_data['error'] = true;
-        $response_data['message'] = 'Please try again later';
-    }
-
-    $response->getBody()->write(json_encode($response_data));
-
-    return $response
-        ->withHeader('Content-type', 'application/json')
-        ->withStatus(200);
-});
-
+# checks to see if the parameters are empty
 function haveEmptyParameters($required_params, $request, $response) {
     $error = false;
     $error_params = '';

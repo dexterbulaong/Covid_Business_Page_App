@@ -24,6 +24,7 @@
             }
             return USER_EXISTS;
         }
+
         #create variables of a business
         public function createBusiness($business_id, $business_name, $business_address, $business_hours, $business_type, $business_link, $entry_date, $last_updated ){
             if (!$this->idExistsForBusiness($business_id)){
@@ -38,6 +39,7 @@
             }
             return USER_EXISTS;
         }
+
         # create variables of a protocol
         public function createProtocols($business_id, $status, $mask_required, $customer_limit, $curbside_pickup ){
             if (!$this->idExistsForProtocols($business_id)){
@@ -97,7 +99,7 @@
             return $business_users;
         }
 
-        # returns a single user using email. User password is grabbed through getUserPasswordsByEmail() function
+        # returns a row from the business_users table using business_id
         public function getUserByEmail($user_email) {
             $stmt = $this->con->prepare("SELECT business_id, user_email, business_name FROM business_users WHERE user_email = ?" );
             $stmt->bind_param("s", $user_email);
@@ -111,42 +113,45 @@
 
             return $user;
         }
-
+        
+        # returns a row from the businesses table based on the business_id
         public function getBusinessById($business_id) {
-            $stmt = $this->con->prepare("SELECT 'business_id', 'business_name', 'business_address', 'business_hours', 'business_type', 'business_link', 'entry_date', 'last_updated' FROM businesses WHERE business_id = ?" );
+            $stmt = $this->con->prepare("SELECT business_id, business_name, business_address, business_hours, business_type, business_link, entry_date, last_updated FROM businesses WHERE business_id = ?" );
             $stmt->bind_param("i", $business_id);
             $stmt->execute();
             $stmt->bind_result($business_id, $business_name, $business_address, $business_hours, $business_type, $business_link, $entry_date, $last_updated);
             $stmt->fetch();
-            $user = array();
-            $user['business_id'] = $business_id;
-            $user['business_name'] = $business_name;
-            $user['business_address'] = $business_address;
-            $user['business_hours'] = $business_hours;
-            $user['business_type'] = $business_type;
-            $user['business_link'] = $business_link;
-            $user['entry_date'] = $entry_date;
-            $user['last_updated'] = $last_updated;
+            $business = array();
+            $business['business_id'] = $business_id;
+            $business['business_name'] = $business_name;
+            $business['business_address'] = $business_address;
+            $business['business_hours'] = $business_hours;
+            $business['business_type'] = $business_type;
+            $business['business_link'] = $business_link;
+            $business['entry_date'] = $entry_date;
+            $business['last_updated'] = $last_updated;
             
-            return $user;
+            return $business;
         }
 
-        public function getProtocolsById($business_id) {
-            $stmt = $this->con->prepare("SELECT 'business_id', 'status', 'mask_required', 'customer_limit', 'curbside_pickup' FROM protocols WHERE business_id = ?" );
+        # returns a row from the protocols table based on business_id
+        public function getProtocolById($business_id) {
+            $stmt = $this->con->prepare("SELECT business_id, status, mask_required, customer_limit, curbside_pickup FROM protocols WHERE business_id = ?" );
             $stmt->bind_param("i", $business_id);
             $stmt->execute();
             $stmt->bind_result($business_id, $status, $mask_required, $customer_limit, $curbside_pickup);
             $stmt->fetch();
-            $user = array();
-            $user['business_id'] = $business_id;
-            $user['status'] = $status;
-            $user['mask_required'] = $mask_required;
-            $user['customer_limit'] = $customer_limit;
-            $user['business_type'] = $curbside_pickup;
+            $protocol = array();
+            $protocol['business_id'] = $business_id;
+            $protocol['status'] = $status;
+            $protocol['mask_required'] = $mask_required;
+            $protocol['customer_limit'] = $customer_limit;
+            $protocol['business_type'] = $curbside_pickup;
             
-            return $user;
+            return $protocol;
         }
 
+        # updates a row from the business_users table
         public function updateUser($user_email, $business_name, $business_id) {
             $stmt = $this->con->prepare("UPDATE business_users SET user_email = ?, business_name = ? WHERE business_id = ? ");
             $stmt->bind_param("ssi", $user_email, $business_name, $business_id);
@@ -155,6 +160,7 @@
             return false;
         }
 
+        # updates a row from the businesses table
         public function updateBusinesses($business_name, $business_address, $business_hours, $business_type, $business_link, $entry_date, $last_updated, $business_id) {
             $stmt = $this->con->prepare("UPDATE businesses SET business_name = ?, business_address = ?, business_hours = ?, business_type = ?, business_link = ?, entry_date = ?, last_updated = ? WHERE business_id = ? ");
             $stmt->bind_param("sssssssi", $business_name, $business_address, $business_hours, $business_type, $business_link, $entry_date, $last_updated, $business_id);
@@ -163,6 +169,7 @@
             return false;
         }
 
+        # updates a row from the protocols table
         public function updateProtocols($status, $mask_required, $customer_limit, $curbside_pickup, $business_id) {
             $stmt = $this->con->prepare("UPDATE protocols SET status = ?, mask_required = ?, customer_limit = ?, curbside_pickup = ? WHERE business_id = ? ");
             $stmt->bind_param("ssssi", $status, $mask_required, $customer_limit, $curbside_pickup, $business_id);
@@ -171,6 +178,7 @@
             return false;
         }
 
+        # updates the hashed password from the business_users table
         public function updatePassword($currentpassword, $newpassword, $user_email) {
             $hashed_password = $this->getUserPasswordsByEmail($user_email);
         
@@ -191,7 +199,7 @@
             }
         }
         # deletes all rows from all tables in the database associated with the business_id
-        public function deleteUser($business_id) {
+        public function deleteEntity($business_id) {
             $stmt = $this->con->prepare("DELETE FROM business_users WHERE business_id = ?");
             $stmt_business = $this->con->prepare("DELETE FROM businesses WHERE business_id = ?");
             $stmt->bind_param("i", $business_id);
@@ -224,7 +232,6 @@
             return false;
         }     
 
-
         # checks to see if email is in the database
         private function emailExists($user_email) {
             $stmt = $this->con->prepare("SELECT business_id FROM business_users WHERE user_email = ?");
@@ -235,6 +242,7 @@
             return $stmt->num_rows > 0;
         }
 
+        # checks to see if a business_id exists in the businesses table
         private function idExistsForBusiness($business_id) {
             $stmt = $this->con->prepare("SELECT business_id FROM businesses WHERE business_id = ?");
             $stmt->bind_param("i", $business_id);
@@ -244,6 +252,7 @@
             return $stmt->num_rows > 0;
         }
 
+        # checks to see if a business exists in the protocols table
         private function idExistsForProtocols($business_id) {
             $stmt = $this->con->prepare("SELECT business_id FROM protocols WHERE business_id = ?");
             $stmt->bind_param("i", $business_id);
