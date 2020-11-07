@@ -22,8 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     boolean isValid = false;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

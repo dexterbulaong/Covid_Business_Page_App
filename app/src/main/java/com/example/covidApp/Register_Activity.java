@@ -3,6 +3,7 @@ package com.example.covidApp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatCallback;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.os.Bundle;
@@ -16,8 +17,9 @@ import android.widget.ProgressBar;
 
 public class Register_Activity extends AppCompatActivity {
     private EditText reg_name, reg_email, reg_pass;
-    private Button rButton;
+    private Button rButton, bButton;
     ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class Register_Activity extends AppCompatActivity {
         reg_email = findViewById(R.id.log_email);
         reg_pass = findViewById(R.id.log_pass);
         rButton = findViewById(R.id.log_button);
+        bButton = findViewById(R.id.login_go_back);
 
         rButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +50,8 @@ public class Register_Activity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
 }

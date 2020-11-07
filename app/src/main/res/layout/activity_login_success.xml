@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="216dp"
-        android:layout_height="112dp"
+        android:layout_width="137dp"
+        android:layout_height="109dp"
         android:text="Successful Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
