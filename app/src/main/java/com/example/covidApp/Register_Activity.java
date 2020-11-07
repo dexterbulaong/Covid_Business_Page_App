@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatCallback;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 public class Register_Activity extends AppCompatActivity {
     private EditText reg_name, reg_email, reg_pass;
@@ -43,8 +45,14 @@ public class Register_Activity extends AppCompatActivity {
                 }
                 if(password.length() < 4){
                     reg_pass.setError("Password must be greater than 4 characters");
-                    return;
+                    //return;
                 }
+                else {
+                    Toast.makeText(Register_Activity.this, "Successful Registration", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Register_Activity.this, Register_Business.class);
+                    startActivity(intent);
+                }
+
             }
         });
     }
