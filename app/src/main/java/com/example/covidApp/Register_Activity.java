@@ -58,16 +58,11 @@ public class Register_Activity extends AppCompatActivity {
                     reg_pass.setError("Password must be greater than 4 characters");
                     //return;
                 }
-                else {
-                    Toast.makeText(Register_Activity.this, "Successful Registration", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Register_Activity.this, Register_Business.class);
-                    startActivity(intent);
-                }
+
                 Call<ResponseBody> call = RetrofitClient
                         .getInstance()
                         .getApi()
                         .createUser(user_email, user_password, business_name);
-
 
                 call.enqueue(new Callback<ResponseBody>() {
                     @Override
@@ -78,7 +73,6 @@ public class Register_Activity extends AppCompatActivity {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-
                     }
 
                     @Override
@@ -87,8 +81,9 @@ public class Register_Activity extends AppCompatActivity {
                     }
                 });
 
+                Intent intent = new Intent(Register_Activity.this, Register_Business.class);
+                startActivity(intent);
             }
-
         });
     }
 
