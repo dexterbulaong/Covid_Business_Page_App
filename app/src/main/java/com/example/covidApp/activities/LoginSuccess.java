@@ -1,14 +1,16 @@
-package com.example.covidApp;
+package com.example.covidApp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Register_Business extends AppCompatActivity {
+import com.example.covidApp.R;
+
+public class LoginSuccess extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register__business);
+        setContentView(R.layout.activity_login_success);
     }
 }

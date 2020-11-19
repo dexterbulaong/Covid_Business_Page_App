@@ -1,24 +1,19 @@
-package com.example.covidApp;
+package com.example.covidApp.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatCallback;
-import androidx.navigation.fragment.NavHostFragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import java.io.IOException;
+import com.example.covidApp.R;
+import com.example.covidApp.models.DefaultResponse;
+import com.example.covidApp.api.RetrofitClient;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,41 +43,41 @@ public class Register_Activity extends AppCompatActivity {
                 String user_password = reg_pass.getText().toString().trim();
                 String business_name = reg_name.getText().toString().trim();
 
-                if(TextUtils.isEmpty(user_email)){
+                if (TextUtils.isEmpty(user_email)) {
                     reg_email.setError("Email Required");
                 }
-                if(TextUtils.isEmpty(user_password)){
+                if (TextUtils.isEmpty(user_password)) {
                     reg_pass.setError("Password Required");
                 }
-                if(user_password.length() < 4){
+                if (user_password.length() < 4) {
                     reg_pass.setError("Password must be greater than 4 characters");
                     //return;
                 }
 
-                Call<ResponseBody> call = RetrofitClient
+                Call<DefaultResponse> call = RetrofitClient
                         .getInstance()
                         .getApi()
                         .createUser(user_email, user_password, business_name);
 
-                call.enqueue(new Callback<ResponseBody>() {
+                call.enqueue(new Callback<DefaultResponse>() {
                     @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        try {
-                            String s = response.body().string();
-                            Toast.makeText(Register_Activity.this, s, Toast.LENGTH_LONG).show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                    public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+
+                        if (response.code() == 201) {
+                            DefaultResponse dr = response.body();
+                            Toast.makeText(Register_Activity.this, dr.getMsg(), Toast.LENGTH_LONG).show();
+                        }
+                        else if(response.code() == 422) {
+                            Toast.makeText(Register_Activity.this, "User already exists", Toast.LENGTH_LONG).show();
+
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Toast.makeText(Register_Activity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                    public void onFailure(Call<DefaultResponse> call, Throwable t) {
+
                     }
                 });
-
-                Intent intent = new Intent(Register_Activity.this, Register_Business.class);
-                startActivity(intent);
             }
         });
     }

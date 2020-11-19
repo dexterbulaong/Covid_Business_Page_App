@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/MainHome"
-        android:name="com.example.covidApp.home_file"
+        android:name="com.example.covidApp.activities.home_file"
         android:label="Home"
         tools:layout="@layout/home_layout">
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/CategNav"
-        android:name="com.example.covidApp.Categ_main"
+        android:name="com.example.covidApp.activities.Categ_main"
         android:label="Category Home"
         tools:layout="@layout/category_layout">
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/beauty_search"
-        android:name="com.example.covidApp.Beauty_search"
+        android:name="com.example.covidApp.activities.Beauty_search"
         android:label="Beauty_search"
         tools:layout="@layout/beauty_layout">
         <action
@@ -64,7 +64,7 @@
     </fragment>
     <fragment
         android:id="@+id/govern_search"
-        android:name="com.example.covidApp.Govern_search"
+        android:name="com.example.covidApp.activities.Govern_search"
         android:label="Govern_search"
         tools:layout="@layout/govern_layout">
         <action
@@ -73,7 +73,7 @@
     </fragment>
     <fragment
         android:id="@+id/groc_search"
-        android:name="com.example.covidApp.Groc_search"
+        android:name="com.example.covidApp.activities.Groc_search"
         android:label="Groc_search"
         tools:layout="@layout/groc_layout">
         <action
@@ -82,7 +82,7 @@
     </fragment>
     <fragment
         android:id="@+id/pets_search"
-        android:name="com.example.covidApp.Pets_search"
+        android:name="com.example.covidApp.activities.Pets_search"
         android:label="Pets_search"
         tools:layout="@layout/pets_layout">
         <action
@@ -91,7 +91,7 @@
     </fragment>
     <fragment
         android:id="@+id/restaurant_search"
-        android:name="com.example.covidApp.Restaurant_search"
+        android:name="com.example.covidApp.activities.Restaurant_search"
         android:label="Restaurant_search"
         tools:layout="@layout/rest_layout">
         <action
@@ -100,7 +100,7 @@
     </fragment>
     <fragment
         android:id="@+id/retail_search"
-        android:name="com.example.covidApp.Retail_search"
+        android:name="com.example.covidApp.activities.Retail_search"
         android:label="Retail_search"
         tools:layout="@layout/retail_layout">
         <action
@@ -109,7 +109,7 @@
     </fragment>
     <fragment
         android:id="@+id/sports_search"
-        android:name="com.example.covidApp.Sports_search"
+        android:name="com.example.covidApp.activities.Sports_search"
         android:label="Sports_search"
         tools:layout="@layout/sport_layout">
         <action
@@ -118,7 +118,7 @@
     </fragment>
     <fragment
         android:id="@+id/warehouse_search"
-        android:name="com.example.covidApp.Warehouse_search"
+        android:name="com.example.covidApp.activities.Warehouse_search"
         android:label="Warehouse_search"
         tools:layout="@layout/ware_layout">
         <action
@@ -127,12 +127,12 @@
     </fragment>
     <activity
         android:id="@+id/logActivity"
-        android:name="com.example.covidApp.LogActivity"
+        android:name="com.example.covidApp.activities.LogActivity"
         android:label="activity_log"
         tools:layout="@layout/activity_log" />
     <activity
         android:id="@+id/register_Activity"
-        android:name="com.example.covidApp.Register_Activity"
+        android:name="com.example.covidApp.activities.Register_Activity"
         android:label="activity_register_"
         tools:layout="@layout/activity_register_" />
 

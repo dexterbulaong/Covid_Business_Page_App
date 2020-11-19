@@ -133,6 +133,49 @@
             
             return $business;
         }
+        
+        # returns a row from the businesses table based on the business_name
+        public function getBusinessByName($business_name) {
+            $stmt = $this->con->prepare("SELECT business_id, business_name, business_address, business_hours, business_type, business_link, entry_date, last_updated FROM businesses WHERE business_name = ?" );
+            $stmt->bind_param("s", $business_name);
+            $stmt->execute();
+            $stmt->bind_result($business_id, $business_name, $business_address, $business_hours, $business_type, $business_link, $entry_date, $last_updated);
+            $stmt->fetch();
+            $business = array();
+            $business['business_id'] = $business_id;
+            $business['business_name'] = $business_name;
+            $business['business_address'] = $business_address;
+            $business['business_hours'] = $business_hours;
+            $business['business_type'] = $business_type;
+            $business['business_link'] = $business_link;
+            $business['entry_date'] = $entry_date;
+            $business['last_updated'] = $last_updated;
+            
+            return $business;
+        }
+
+        # returns all from the businesses table based on the business_type
+        public function getBusinessesByType($business_type) {
+            $stmt = $this->con->prepare("SELECT business_id, business_name, business_address, business_hours, business_type, business_link, entry_date, last_updated FROM businesses WHERE business_type = ?;" );
+            $stmt->bind_param("s", $business_type);
+            $stmt->execute();
+            $stmt->bind_result($business_id, $business_name, $business_address, $business_hours, $business_type, $business_link, $entry_date, $last_updated);
+            $businesses = array();
+            while($stmt->fetch()) {
+                $business = array();
+                $business['business_id'] = $business_id;
+                $business['business_name'] = $business_name;
+                $business['business_address'] = $business_address;
+                $business['business_hours'] = $business_hours;
+                $business['business_type'] = $business_type;
+                $business['business_link'] = $business_link;
+                $business['entry_date'] = $entry_date;
+                $business['last_updated'] = $last_updated;
+                array_push($businesses, $business);
+            }
+            
+            return $businesses;
+        }
 
         # returns a row from the protocols table based on business_id
         public function getProtocolById($business_id) {
@@ -150,6 +193,7 @@
             
             return $protocol;
         }
+        
 
         # updates a row from the business_users table
         public function updateUser($user_email, $business_name, $business_id) {

@@ -243,6 +243,48 @@ $app->get('/getbusiness/{business_id}', function(Request $request, Response $res
     
 });
 
+# gets a row in the businesses table depending on the business_name
+$app->get('/getbusiness/{business_name}', function(Request $request, Response $response, array $args) {
+    $business_name = $args['business_name'];
+
+    $db = new DbOperations;
+
+    $business = $db->getBusinessByName($business_name);
+
+    $response_data = array();
+
+    $response_data['error'] = false;
+    $response_data['business'] = $business;
+
+    $response->getBody()->write(json_encode($response_data));
+
+    return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+    
+});
+
+# gets all rows in the businesses table depending on the business_type
+$app->get('/getbusinesses/{business_type}', function(Request $request, Response $response, array $args) {
+    $business_type = $args['business_type'];
+
+    $db = new DbOperations;
+
+    $business = $db->getBusinessesByType($business_type);
+
+    $response_data = array();
+
+    $response_data['error'] = false;
+    $response_data['business'] = $business;
+
+    $response->getBody()->write(json_encode($response_data));
+
+    return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+    
+});
+
 # gets a row in the protocols table
 $app->get('/getprotocol/{business_id}', function(Request $request, Response $response, array $args) {
     $business_id = $args['business_id'];
