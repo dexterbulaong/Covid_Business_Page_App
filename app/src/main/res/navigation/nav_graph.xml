@@ -50,8 +50,8 @@
             android:id="@+id/action_CategNav_to_sports_search"
             app:destination="@id/sports_search" />
         <action
-            android:id="@+id/action_CategNav_to_warehouse_search"
-            app:destination="@id/warehouse_search" />
+            android:id="@+id/action_CategNav_to_entertainment_search"
+            app:destination="@id/entertainment_search" />
     </fragment>
     <fragment
         android:id="@+id/beauty_search"
@@ -117,12 +117,12 @@
             app:destination="@id/CategNav" />
     </fragment>
     <fragment
-        android:id="@+id/warehouse_search"
-        android:name="com.example.covidApp.activities.Warehouse_search"
-        android:label="Warehouse_search"
-        tools:layout="@layout/ware_layout">
+        android:id="@+id/entertainment_search"
+        android:name="com.example.covidApp.activities.Entertainment_search"
+        android:label="Entertainment_search"
+        tools:layout="@layout/ent_layout">
         <action
-            android:id="@+id/action_warehouse_search_to_CategNav"
+            android:id="@+id/action_entertainment_search_to_CategNav"
             app:destination="@id/CategNav" />
     </fragment>
     <activity

@@ -28,7 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Sports_search extends Fragment {
+public class Entertainment_search extends Fragment {
     //    LinearLayout linearLayout;
     private RecyclerView recyclerView;
     private Business_Adapter adapter;
@@ -42,9 +42,9 @@ public class Sports_search extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        View v = inflater.inflate(R.layout.sport_layout, container, false);
+        View v = inflater.inflate(R.layout.pets_layout, container, false);
 
-        Call<Category_Response> call = RetrofitClient.getInstance().getApi().getBusinesses("Sporting and Hunting");
+        Call<Category_Response> call = RetrofitClient.getInstance().getApi().getBusinesses("Entertainment");
 
         call.enqueue(new Callback<Category_Response>() {
             @Override
@@ -63,7 +63,6 @@ public class Sports_search extends Fragment {
                         public void onClick(View v) {
 
                             /* This is where it will transition to the template business page*/
-
                         }
                     });
 
@@ -87,8 +86,8 @@ public class Sports_search extends Fragment {
         view.findViewById(R.id.back_to_Category).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(Sports_search.this)
-                        .navigate(R.id.action_sports_search_to_CategNav);
+                NavHostFragment.findNavController(Entertainment_search.this)
+                        .navigate(R.id.action_entertainment_search_to_CategNav);
             }
         });
 
