@@ -64,10 +64,10 @@ public class Pets_search extends Fragment {
 
                             /* This is where it will transition to the template business page*/
 
-//                            Bundle bundle = new Bundle();
-//                            bundle.putString("business_name", businessList.get(index).getName());
-//                            NavHostFragment.findNavController(Pets_search.this)
-//                                    .navigate(R.id.business_template_transition, bundle);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("business_name", businessList.get(index).getName());
+                            NavHostFragment.findNavController(Pets_search.this)
+                                    .navigate(R.id.action_pets_search_to_Business_Temp, bundle);
                         }
                     });
 

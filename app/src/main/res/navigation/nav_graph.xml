@@ -88,6 +88,9 @@
         <action
             android:id="@+id/action_pets_search_to_CategNav"
             app:destination="@id/CategNav" />
+        <action
+            android:id="@+id/action_pets_search_to_Business_Temp"
+            app:destination="@id/Business_Temp" />
     </fragment>
     <fragment
         android:id="@+id/restaurant_search"
@@ -124,6 +127,12 @@
         <action
             android:id="@+id/action_entertainment_search_to_CategNav"
             app:destination="@id/CategNav" />
+    </fragment>
+    <fragment
+        android:id="@+id/Business_Temp"
+        android:name="com.example.covidApp.activities.Business_Screen_Template"
+        android:label="Business Template"
+        tools:layout="@layout/business_temp">
     </fragment>
     <activity
         android:id="@+id/logActivity"

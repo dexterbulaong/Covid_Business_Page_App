@@ -1,5 +1,6 @@
 package com.example.covidApp.api;
 
+import com.example.covidApp.models.Business_Display_Response;
 import com.example.covidApp.models.Category_Response;
 import com.example.covidApp.models.DefaultResponse;
 import com.example.covidApp.models.LoginResponse;
@@ -29,9 +30,19 @@ public interface API {
             @Field("user_password") String user_password
     );
 
-    @GET("getbusinesses/{business_name}")
+    @GET("getbusinesses/{business_type}")
     Call<Category_Response> getBusinesses(
-            @Path("business_name") String business_name
+            @Path("business_type") String business_type
+    );
+
+    @GET("getbusiness/{business_id}")
+    Call<Business_Display_Response> getBusinessById(
+            @Path("business_id") String business_id
+    );
+
+    @GET("getbusinessbyname/{business_name}")
+    Call<Business_Display_Response> getBusinessByName(
+            @Path("business_name") String business_Name
     );
 
 }
