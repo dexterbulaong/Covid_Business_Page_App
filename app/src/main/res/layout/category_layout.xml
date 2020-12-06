@@ -21,17 +21,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/back_to_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginBottom="50dp"
-        android:text="@string/previous"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/to_beauty"
         android:layout_width="327dp"
         android:layout_height="39dp"
@@ -132,4 +121,19 @@
         app:layout_constraintBottom_toTopOf="@+id/to_sports"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_retail" />
+
+    <TextView
+        android:id="@+id/Business_Name2"
+        android:layout_width="300dp"
+        android:layout_height="118dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="135dp"
+        android:text="Category Home Screen"
+        android:textAllCaps="true"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/to_sports" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

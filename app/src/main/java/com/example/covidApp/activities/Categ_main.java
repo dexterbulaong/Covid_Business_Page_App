@@ -96,15 +96,6 @@ public class Categ_main extends Fragment {
             }
         }
         );
-
-        view.findViewById(R.id.back_to_home).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(Categ_main.this)
-                        .navigate(R.id.action_CategNav_to_MainHome);
-            }
-        }
-        );
         
     }
 }

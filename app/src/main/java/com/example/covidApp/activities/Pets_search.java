@@ -88,13 +88,6 @@ public class Pets_search extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.back_to_Category).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(Pets_search.this)
-                        .navigate(R.id.action_pets_search_to_CategNav);
-            }
-        });
 
     }
 }

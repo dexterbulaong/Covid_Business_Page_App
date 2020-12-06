@@ -88,13 +88,6 @@ public class Beauty_search extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.back_to_Category).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(com.example.covidApp.activities.Beauty_search.this)
-                        .navigate(R.id.action_beauty_search_to_CategNav);
-            }
-        });
 
     }
 }
