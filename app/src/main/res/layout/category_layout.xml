@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Categ_main">
+    tools:context=".activities.Categ_main">
 
     <TextView
-        android:id="@+id/textview_second"
+        android:id="@+id/Business_Name"
         android:layout_width="325dp"
         android:layout_height="52dp"
         android:layout_marginStart="40dp"
@@ -55,7 +55,7 @@
         android:text="Government"
         app:layout_constraintBottom_toTopOf="@+id/to_grocery"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_second" />
+        app:layout_constraintTop_toBottomOf="@+id/Business_Name" />
 
     <Button
         android:id="@+id/to_grocery"
@@ -105,7 +105,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
         android:text="Retail"
-        app:layout_constraintBottom_toTopOf="@+id/to_ware"
+        app:layout_constraintBottom_toTopOf="@+id/to_ent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_pets" />
 
@@ -118,17 +118,17 @@
         android:layout_marginTop="3dp"
         android:text="Sports"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/to_ware" />
+        app:layout_constraintTop_toBottomOf="@+id/to_ent" />
 
     <Button
-        android:id="@+id/to_ware"
+        android:id="@+id/to_ent"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="43dp"
         android:layout_marginLeft="43dp"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
-        android:text="Warehouse"
+        android:text="Entertainment"
         app:layout_constraintBottom_toTopOf="@+id/to_sports"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_retail" />

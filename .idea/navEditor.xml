@@ -8,13 +8,25 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="B">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="CategNav">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="256" />
-                            <option name="y" value="80" />
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -25,6 +37,11 @@
                               </value>
                             </entry>
                             <entry key="action_CategNav_to_beauty_search">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_CategNav_to_entertainment_search">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -59,11 +76,6 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_CategNav_to_warehouse_search">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -85,6 +97,16 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_MainHome_to_logActivity">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_MainHome_to_register_Activity">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -102,6 +124,27 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_beauty_search_to_CategNav">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="entertainment_search">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_entertainment_search_to_CategNav">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -176,6 +219,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_pets_search_to_Business_Temp">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_pets_search_to_CategNav">
                               <value>
                                 <LayoutPositions />
@@ -252,27 +300,6 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_sports_search_to_CategNav">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="warehouse_search">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="46" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_warehouse_search_to_CategNav">
                               <value>
                                 <LayoutPositions />
                               </value>

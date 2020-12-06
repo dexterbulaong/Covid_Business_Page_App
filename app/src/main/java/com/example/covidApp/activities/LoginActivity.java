@@ -1,4 +1,4 @@
-package com.example.covidApp;
+package com.example.covidApp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.covidApp.R;
+import com.example.covidApp.api.RetrofitClient;
+import com.example.covidApp.models.LoginResponse;
+
+import retrofit2.Call;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText usEmail;
@@ -66,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private boolean verify(String email, String Pass){
+
         if(email.equals(userEmail) && Pass.equals(userPass)){
             return true;
         }
