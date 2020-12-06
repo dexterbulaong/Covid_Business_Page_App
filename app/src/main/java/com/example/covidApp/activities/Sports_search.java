@@ -63,6 +63,10 @@ public class Sports_search extends Fragment {
                         public void onClick(View v) {
 
                             /* This is where it will transition to the template business page*/
+                            Bundle bundle = new Bundle();
+                            bundle.putString("business_name", businessList.get(index).getName());
+                            NavHostFragment.findNavController(Sports_search.this)
+                                    .navigate(R.id.action_sports_search_to_Business_Temp, bundle);
 
                         }
                     });

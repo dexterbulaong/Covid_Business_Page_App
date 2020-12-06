@@ -63,6 +63,11 @@ public class Beauty_search extends Fragment {
                         public void onClick(View v) {
 
                             /* This is where it will transition to the template business page*/
+                            Bundle bundle = new Bundle();
+                            bundle.putString("business_name", businessList.get(index).getName());
+                            NavHostFragment.findNavController(Beauty_search.this)
+                                    .navigate(R.id.action_beauty_search_to_Business_Temp, bundle);
+
                         }
                     });
 

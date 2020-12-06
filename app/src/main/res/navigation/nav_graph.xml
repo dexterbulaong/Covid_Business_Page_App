@@ -61,6 +61,9 @@
         <action
             android:id="@+id/action_beauty_search_to_CategNav"
             app:destination="@id/CategNav" />
+        <action
+            android:id="@+id/action_beauty_search_to_Business_Temp"
+            app:destination="@id/Business_Temp" />
     </fragment>
     <fragment
         android:id="@+id/govern_search"
@@ -70,6 +73,9 @@
         <action
             android:id="@+id/action_govern_search_to_CategNav"
             app:destination="@id/CategNav" />
+        <action
+            android:id="@+id/action_govern_search_to_Business_Temp"
+            app:destination="@id/Business_Temp" />
     </fragment>
     <fragment
         android:id="@+id/groc_search"
@@ -79,6 +85,9 @@
         <action
             android:id="@+id/action_groc_search_to_CategNav"
             app:destination="@id/CategNav" />
+        <action
+            android:id="@+id/action_groc_search_to_Business_Temp"
+            app:destination="@id/Business_Temp" />
     </fragment>
     <fragment
         android:id="@+id/pets_search"
@@ -100,6 +109,9 @@
         <action
             android:id="@+id/action_restaurant_search_to_CategNav"
             app:destination="@id/CategNav" />
+        <action
+            android:id="@+id/action_restaurant_search_to_Business_Temp"
+            app:destination="@id/Business_Temp" />
     </fragment>
     <fragment
         android:id="@+id/retail_search"
@@ -109,6 +121,9 @@
         <action
             android:id="@+id/action_retail_search_to_CategNav"
             app:destination="@id/CategNav" />
+        <action
+            android:id="@+id/action_retail_search_to_Business_Temp"
+            app:destination="@id/Business_Temp" />
     </fragment>
     <fragment
         android:id="@+id/sports_search"
@@ -118,6 +133,9 @@
         <action
             android:id="@+id/action_sports_search_to_CategNav"
             app:destination="@id/CategNav" />
+        <action
+            android:id="@+id/action_sports_search_to_Business_Temp"
+            app:destination="@id/Business_Temp" />
     </fragment>
     <fragment
         android:id="@+id/entertainment_search"
@@ -127,6 +145,9 @@
         <action
             android:id="@+id/action_entertainment_search_to_CategNav"
             app:destination="@id/CategNav" />
+        <action
+            android:id="@+id/action_entertainment_search_to_Business_Temp"
+            app:destination="@id/Business_Temp" />
     </fragment>
     <fragment
         android:id="@+id/Business_Temp"
