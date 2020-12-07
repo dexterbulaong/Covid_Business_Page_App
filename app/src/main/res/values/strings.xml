@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">covidAPP</string>
+    <string name="app_name">CovidBook</string>
     <string name="title_activity_test_act2">TestAct2</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->

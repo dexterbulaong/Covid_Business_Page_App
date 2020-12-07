@@ -7,17 +7,73 @@
 
     <TextView
         android:id="@+id/Business_Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="80dp"
         android:layout_centerInParent="true"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="50dp"
         android:singleLine="true"
         android:textAllCaps="true"
+        android:gravity="center"
+        android:textAlignment="gravity"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="32sp"
         app:autoSizeMaxTextSize="?android:attr/windowTitleSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Hours_List"
+        android:layout_width="280dp"
+        android:layout_height="250dp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textAlignment="gravity"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="18sp"
+        app:autoSizeMaxTextSize="?android:attr/windowTitleSize"
+        app:layout_constraintBottom_toTopOf="@+id/Address"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Business_Name" />
+
+    <TextView
+        android:id="@+id/Address"
+        android:layout_width="400dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:textAlignment="gravity"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Hours_List" />
+
+    <TextView
+        android:id="@+id/Weblink"
+        android:layout_width="400dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
+        android:autoLink="web"
+        android:gravity="center"
+        android:textAlignment="gravity"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Address" />
+
+    <TextView
+        android:id="@+id/Updated"
+        android:layout_width="190dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Weblink" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

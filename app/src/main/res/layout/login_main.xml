@@ -21,8 +21,8 @@
 
     <EditText
         android:id="@+id/Email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="100dp"
         android:ems="10"
         android:hint="Enter Email"
         android:inputType="textPersonName"
@@ -35,8 +35,8 @@
 
     <EditText
         android:id="@+id/Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="100dp"
         android:ems="10"
         android:hint="Enter Password"
         android:inputType="textPersonName"
@@ -49,8 +49,8 @@
 
     <Button
         android:id="@+id/logB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
         android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -42,7 +42,7 @@ public class Entertainment_search extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        View v = inflater.inflate(R.layout.pets_layout, container, false);
+        View v = inflater.inflate(R.layout.ent_layout, container, false);
 
         Call<Category_Response> call = RetrofitClient.getInstance().getApi().getBusinesses("Entertainment");
 

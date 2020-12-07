@@ -9,15 +9,19 @@
 
     <TextView
         android:id="@+id/Business_Name"
-        android:layout_width="100dp"
-        android:layout_height="118dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="580dp"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="500dp"
         android:singleLine="true"
-        android:text="Retail"
         android:textAllCaps="true"
-        android:textSize="24sp"
+        android:gravity="center"
+        android:text="Retail"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="32sp"
+        android:textAlignment = "gravity"
+        app:autoSizeMaxTextSize="?android:attr/windowTitleSize"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

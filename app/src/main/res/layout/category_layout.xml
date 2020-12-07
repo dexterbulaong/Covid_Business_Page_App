@@ -9,131 +9,98 @@
     <TextView
         android:id="@+id/Business_Name"
         android:layout_width="325dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="9dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
         android:singleLine="true"
-        android:text="Here are your Categories"
+        android:text="Select Business type"
         android:textAllCaps="true"
-        android:textSize="24sp"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/to_beauty"
-        android:layout_width="327dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginLeft="43dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
         android:text="Beauty"
         app:layout_constraintBottom_toTopOf="@+id/to_pets"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_restaur" />
 
     <Button
         android:id="@+id/to_government"
-        android:layout_width="327dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginLeft="43dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="1dp"
         android:text="Government"
         app:layout_constraintBottom_toTopOf="@+id/to_grocery"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Business_Name" />
 
     <Button
         android:id="@+id/to_grocery"
-        android:layout_width="328dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginLeft="43dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="3dp"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
         android:text="Grocery"
         app:layout_constraintBottom_toTopOf="@+id/to_restaur"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_government" />
 
     <Button
         android:id="@+id/to_pets"
-        android:layout_width="327dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginLeft="43dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
         android:text="Pet Stores"
         app:layout_constraintBottom_toTopOf="@+id/to_retail"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_beauty" />
 
     <Button
         android:id="@+id/to_restaur"
-        android:layout_width="325dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginLeft="43dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
         android:text="Restaurant"
         app:layout_constraintBottom_toTopOf="@+id/to_beauty"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_grocery" />
 
     <Button
         android:id="@+id/to_retail"
-        android:layout_width="327dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginLeft="43dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
         android:text="Retail"
         app:layout_constraintBottom_toTopOf="@+id/to_ent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_pets" />
 
     <Button
         android:id="@+id/to_sports"
-        android:layout_width="327dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginLeft="43dp"
-        android:layout_marginTop="3dp"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
         android:text="Sports"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_ent" />
 
     <Button
         android:id="@+id/to_ent"
-        android:layout_width="327dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
-        android:layout_marginLeft="43dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
         android:text="Entertainment"
         app:layout_constraintBottom_toTopOf="@+id/to_sports"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_retail" />
 
-    <TextView
-        android:id="@+id/Business_Name2"
-        android:layout_width="300dp"
-        android:layout_height="118dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="135dp"
-        android:text="Category Home Screen"
-        android:textAllCaps="true"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/to_sports" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
